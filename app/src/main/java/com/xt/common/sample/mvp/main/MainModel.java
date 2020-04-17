@@ -1,5 +1,7 @@
 package com.xt.common.sample.mvp.main;
 
+import com.xt.common.sample.mvp.main.base.BaseMainModel;
+
 /**
  * @author xt on 2020/4/17 12:13
  */

@@ -2,8 +2,9 @@ package com.xt.common.sample.mvp.main;
 
 import android.os.Handler;
 
-import com.blankj.utilcode.util.ThreadUtils;
 import com.blankj.utilcode.util.ToastUtils;
+import com.xt.common.sample.mvp.main.base.BaseMainPresenter;
+import com.xt.common.sample.mvp.main.base.BaseMainView;
 
 /**
  * @author xt on 2020/4/17 12:14

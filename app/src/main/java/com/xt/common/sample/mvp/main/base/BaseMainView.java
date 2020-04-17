@@ -1,6 +1,4 @@
-package com.xt.common.sample.mvp.main;
-
-import android.app.Activity;
+package com.xt.common.sample.mvp.main.base;
 
 import com.xt.common.mvp.BaseActivity;
 import com.xt.common.mvp.BaseView;

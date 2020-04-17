@@ -1,4 +1,4 @@
-package com.xt.common.sample.mvp.main;
+package com.xt.common.sample.mvp.main.base;
 
 import com.xt.common.mvp.BaseModel;
 

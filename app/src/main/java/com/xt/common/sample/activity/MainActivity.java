@@ -1,10 +1,8 @@
 package com.xt.common.sample.activity;
 
-import androidx.fragment.app.Fragment;
-
 import com.xt.common.R;
 import com.xt.common.mvp.BaseActivity;
-import com.xt.common.sample.mvp.main.BaseMainView;
+import com.xt.common.sample.mvp.main.base.BaseMainView;
 import com.xt.common.sample.mvp.main.MainView;
 
 /**

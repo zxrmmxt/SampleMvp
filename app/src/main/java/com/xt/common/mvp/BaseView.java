@@ -18,7 +18,7 @@ public abstract class BaseView<MvpPresenter extends BasePresenter> {
     protected SoftReference<Object> mUiSoftReference;
 
     protected BaseActivity mActivity;
-    protected View     mFragmentContentView;
+    protected View         mFragmentContentView;
 
     /**
      * 实例化Presenter的子类对象
@@ -77,4 +77,7 @@ public abstract class BaseView<MvpPresenter extends BasePresenter> {
         return mUiSoftReference != null && mUiSoftReference.get() != null;
     }
 
+    public MvpPresenter getPresenter() {
+        return mPresenter;
+    }
 }

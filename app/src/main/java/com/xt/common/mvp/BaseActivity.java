@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -17,7 +16,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.xt.common.R;
 import com.xt.common.base.TopBarHolder;
 import com.xt.common.statusbar.ImmersiveStatusBarUtils;
-import com.xt.common.statusbar.StatusBarUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +25,7 @@ import java.util.List;
  * @date 2017/3/20
  */
 
-public abstract class BaseActivity<DefaultMvpView extends BaseView> extends AppCompatActivity {
+public abstract class BaseActivity<MvpView extends BaseView> extends AppCompatActivity {
     private static final String       TAG = BaseActivity.class.getSimpleName();
     private              FrameLayout  mRootLayout;
     private              FrameLayout  mContentContainer;
@@ -36,7 +34,7 @@ public abstract class BaseActivity<DefaultMvpView extends BaseView> extends AppC
     /**
      * 默认的MvpView
      */
-    protected DefaultMvpView mDefaultMvpView;
+    protected MvpView        mMvpView;
     protected List<BaseView> mMvpViewList = new ArrayList<>();
 
     @Override
@@ -60,7 +58,7 @@ public abstract class BaseActivity<DefaultMvpView extends BaseView> extends AppC
             mRootLayout.setBackgroundResource(getBackgroundResource());
             mTopBarHolder = TopBarHolder.init(this);
         }
-        initMvpViews();
+        initMvpView();
     }
 
     protected void beforeSetContentView(Bundle savedInstanceState) {
@@ -92,7 +90,7 @@ public abstract class BaseActivity<DefaultMvpView extends BaseView> extends AppC
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        destroyViews();
+        destroyView();
     }
 
     @Override
@@ -135,7 +133,7 @@ public abstract class BaseActivity<DefaultMvpView extends BaseView> extends AppC
     /**
      * 点击空白地方，输入法隐藏
      */
-    class HideInput {
+    private class HideInput {
         private boolean dispatchTouchEvent(MotionEvent ev) {
             if (ev.getAction() == MotionEvent.ACTION_DOWN) {
                 View v = getCurrentFocus();
@@ -156,12 +154,12 @@ public abstract class BaseActivity<DefaultMvpView extends BaseView> extends AppC
             return onTouchEvent(ev);
         }
 
-        protected void onHideSoftInputFromWindow() {
+        private void onHideSoftInputFromWindow() {
             //键盘隐藏后，界面上的edittext的光标要隐藏
         }
 
-        public boolean isShouldHideInput(View v, MotionEvent event) {
-            if (v != null && (v instanceof EditText)) {
+        private boolean isShouldHideInput(View v, MotionEvent event) {
+            if (v instanceof EditText) {
                 int[] leftTop = {0, 0};
                 //获取输入框当前的location位置
                 v.getLocationInWindow(leftTop);
@@ -183,19 +181,12 @@ public abstract class BaseActivity<DefaultMvpView extends BaseView> extends AppC
         /*************点击空白地方，输入法隐藏******************/
     }
 
-    private void initMvpViews() {
-        mDefaultMvpView = createDefaultMvpView();
-        addMvpViews();
-        for (BaseView view : mMvpViewList) {
-            if (view != null) {
-                view.attachUi(this);
-            }
-        }
-        {
-            for (BaseView baseView : mMvpViewList) {
-                baseView.initViews();
-                baseView.initData();
-            }
+    private void initMvpView() {
+        mMvpView = createMvpView();
+        if (mMvpView != null) {
+            mMvpView.attachUi(this);
+            mMvpView.initViews();
+            mMvpView.initData();
         }
     }
 
@@ -204,33 +195,12 @@ public abstract class BaseActivity<DefaultMvpView extends BaseView> extends AppC
      *
      * @return
      */
-    protected abstract DefaultMvpView createDefaultMvpView();
+    protected abstract MvpView createMvpView();
 
-    private void destroyViews() {
-        for (BaseView view : mMvpViewList) {
-            if ((view != null)) {
-                view.detachUi();
-            }
+    private void destroyView() {
+        if ((mMvpView != null)) {
+            mMvpView.detachUi();
         }
-    }
-
-    /**
-     * 实例化多个BaseView的子类对象,一般情况不用实现
-     */
-    protected void addMvpViews() {
-        mMvpViewList.add(mDefaultMvpView);
-    }
-
-    /**
-     * 在{@link #addMvpViews()}方法中调用来创建view
-     *
-     * @param view
-     * @param <V>
-     * @return
-     */
-    protected <V extends BaseView> V addMvpView(V view) {
-        mMvpViewList.add(view);
-        return view;
     }
 
 }

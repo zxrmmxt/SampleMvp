@@ -1,4 +1,4 @@
-package com.xt.common.base;
+package com.xt.common.topbar;
 
 import android.app.Activity;
 import android.os.Build;

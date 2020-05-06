@@ -11,7 +11,7 @@ import com.xt.common.sample.mvp.main.MainView;
 public class MainActivity extends BaseActivity<BaseMainView> {
 
     @Override
-    protected int getLayoutResID() {
+    protected int getLayoutResId() {
         return R.layout.activity_main;
     }
 

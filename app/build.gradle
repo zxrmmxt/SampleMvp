@@ -38,6 +38,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
+
     //引入ButterKnife
     /*butterknife-compiler-8.8.1.jar' using Jetifier need to be updated manually to add support
     'for androidx The given artifact contains a string literal with a package
@@ -47,5 +49,4 @@ dependencies {
 
     api 'com.blankj:utilcode:1.26.0'
 
-    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
 }

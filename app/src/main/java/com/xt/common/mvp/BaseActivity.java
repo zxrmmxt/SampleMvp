@@ -14,7 +14,7 @@ import android.widget.FrameLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.xt.common.R;
-import com.xt.common.base.TopBarHolder;
+import com.xt.common.topbar.TopBarHolder;
 import com.xt.common.statusbar.ImmersiveStatusBarUtils;
 
 import java.util.ArrayList;
@@ -53,7 +53,7 @@ public abstract class BaseActivity<MvpView extends BaseView> extends AppCompatAc
             mRootLayout = findViewById(R.id.rootLayout);
             mContentContainer = findViewById(R.id.contentContainer);
             LayoutInflater layoutInflater = getLayoutInflater();
-            layoutInflater.inflate(getLayoutResID(), mContentContainer, true);
+            layoutInflater.inflate(getLayoutResId(), mContentContainer, true);
 
             mRootLayout.setBackgroundResource(getBackgroundResource());
             mTopBarHolder = TopBarHolder.init(this);
@@ -69,7 +69,7 @@ public abstract class BaseActivity<MvpView extends BaseView> extends AppCompatAc
 
     }
 
-    protected abstract int getLayoutResID();
+    protected abstract int getLayoutResId();
 
     protected int getTitleLayoutRes() {
         return R.layout.layout_title_bar;

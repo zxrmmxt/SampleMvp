@@ -55,7 +55,6 @@ public abstract class BaseActivity<MvpView extends BaseView> extends AppCompatAc
             LayoutInflater layoutInflater = getLayoutInflater();
             layoutInflater.inflate(getLayoutResId(), mContentContainer, true);
 
-            mRootLayout.setBackgroundResource(getBackgroundResource());
             mTopBarHolder = TopBarHolder.init(this);
         }
         initMvpView();
@@ -105,8 +104,8 @@ public abstract class BaseActivity<MvpView extends BaseView> extends AppCompatAc
     }
 
     /**********************************设置状态栏颜色*****************************************/
-    protected int getBackgroundResource() {
-        return R.color.colorGray333333;
+    protected void setBackgroundResource(int backgroundRes) {
+        mRootLayout.setBackgroundResource(backgroundRes);
     }
 
     /**
@@ -119,7 +118,7 @@ public abstract class BaseActivity<MvpView extends BaseView> extends AppCompatAc
     }
 
     public void hideTitleBar() {
-        mTopBarHolder.topPanel.setVisibility(View.GONE);
+        mTopBarHolder.mTopBarContainer.setVisibility(View.GONE);
     }
 
     public void setTitleText(int stringTitle) {

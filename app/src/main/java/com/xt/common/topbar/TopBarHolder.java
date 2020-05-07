@@ -15,18 +15,18 @@ import com.xt.common.statusbar.StatusBarUtil;
 public class TopBarHolder {
     public ImageView mImageViewBack;
     public TextView  mTextViewTitle;
-    public View      topPanel;
-    public ImageView ivRight;
+    public View      mTopBarContainer;
+    public ImageView mIvRight;
 
     public static TopBarHolder init(final Activity activity, int titleRes) {
         TopBarHolder topBarHolder = new TopBarHolder();
-        topBarHolder.topPanel = activity.findViewById(R.id.topBarPanel);
-        topBarHolder.ivRight = activity.findViewById(R.id.ivRight);
+        topBarHolder.mTopBarContainer = activity.findViewById(R.id.topBarContainer);
+        topBarHolder.mIvRight = activity.findViewById(R.id.ivRight);
         topBarHolder.mImageViewBack = activity.findViewById(R.id.imageViewBack);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             //Android5.0以上要适配沉浸式状态栏
-            topBarHolder.topPanel.setPadding(topBarHolder.topPanel.getPaddingLeft(), StatusBarUtil.getStatusBarHeight(activity) + topBarHolder.topPanel.getPaddingTop()
-                    , topBarHolder.topPanel.getPaddingRight(), topBarHolder.topPanel.getPaddingBottom());
+            topBarHolder.mTopBarContainer.setPadding(topBarHolder.mTopBarContainer.getPaddingLeft(), StatusBarUtil.getStatusBarHeight(activity) + topBarHolder.mTopBarContainer.getPaddingTop()
+                    , topBarHolder.mTopBarContainer.getPaddingRight(), topBarHolder.mTopBarContainer.getPaddingBottom());
         }
         topBarHolder.mImageViewBack.setOnClickListener(new View.OnClickListener() {
             @Override

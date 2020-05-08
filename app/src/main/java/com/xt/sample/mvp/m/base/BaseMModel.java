@@ -1,0 +1,10 @@
+package com.xt.sample.mvp.m.base;
+
+import com.xt.common.mvp.BaseModel;
+
+/**
+ * @author xt on 2020/5/6 16:57
+ * 用于copy到自己项目
+ */
+public abstract class BaseMModel extends BaseModel {
+}

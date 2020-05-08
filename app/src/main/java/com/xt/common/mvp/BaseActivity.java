@@ -85,7 +85,7 @@ public abstract class BaseActivity<MvpView extends BaseView> extends AppCompatAc
     @Override
     protected void onResume() {
         super.onResume();
-        mMvpView.resumeData();
+        mMvpView.getPresenter().resumeData();
     }
 
     @Override

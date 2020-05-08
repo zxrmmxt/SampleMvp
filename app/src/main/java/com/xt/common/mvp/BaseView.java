@@ -32,17 +32,7 @@ public abstract class BaseView<MvpPresenter extends BasePresenter> {
     /**
      * 初始化控件
      */
-    abstract void initViews();
-
-    /**
-     * 初始化数据
-     */
-    abstract void initData();
-
-    /**
-     * 一般是在activity或fragment的onResume方法中调用，或者在fragment中onHideChange中调用
-     */
-    abstract void resumeData();
+    protected abstract void initViews();
 
     final void init(BaseActivity activity) {
         mActivity = activity;
@@ -51,8 +41,7 @@ public abstract class BaseView<MvpPresenter extends BasePresenter> {
         mPresenter = createPresenter();
         mPresenter.setView(this);
         initViews();
-        initData();
-
+        mPresenter.initData();
     }
 
     final void init(CommonFragment fragment, View fragmentContentView) {
@@ -65,18 +54,15 @@ public abstract class BaseView<MvpPresenter extends BasePresenter> {
         initViews();
     }
 
-    void attachUi(Object ui) {
+    final void attachUi(Object ui) {
         mUiSoftReference = new SoftReference<>(ui);
     }
 
-    void detachUi() {
+    final void detachUi() {
         if (mUiSoftReference != null) {
             mUiSoftReference.clear();
         }
-        onDetachView();
-    }
-
-    protected void onDetachView() {
+        mPresenter.onDetachView();
     }
 
 
@@ -85,11 +71,15 @@ public abstract class BaseView<MvpPresenter extends BasePresenter> {
      *
      * @return
      */
-    public boolean isUiAttached() {
+    public final boolean isUiAttached() {
         return mUiSoftReference != null && mUiSoftReference.get() != null;
     }
 
-    public MvpPresenter getPresenter() {
+    public final MvpPresenter getPresenter() {
         return mPresenter;
+    }
+
+    public final BaseActivity getActivity() {
+        return mActivity;
     }
 }

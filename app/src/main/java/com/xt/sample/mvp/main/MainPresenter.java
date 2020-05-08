@@ -11,6 +11,15 @@ import com.xt.sample.mvp.main.base.BaseMainView;
  * @author xt on 2020/4/17 12:14
  */
 public class MainPresenter extends BaseMainPresenter {
+    @Override
+    protected BaseMainModel createModel() {
+        return new MainModel();
+    }
+
+    @Override
+    public void initData() {
+        getData();
+    }
 
     @Override
     public void getData() {
@@ -22,10 +31,5 @@ public class MainPresenter extends BaseMainPresenter {
                 mView.updateViewData(data);
             }
         }, 2000);
-    }
-
-    @Override
-    protected BaseMainModel createModel() {
-        return new MainModel();
     }
 }

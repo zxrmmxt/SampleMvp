@@ -28,16 +28,6 @@ public class MainView extends BaseMainView {
     }
 
     @Override
-    public void initData() {
-        mPresenter.getData();
-    }
-
-    @Override
-    public void updateData() {
-
-    }
-
-    @Override
     public void updateViewData(final String data) {
         if (isUiAttached()) {
             mActivity.runOnUiThread(new Runnable() {

@@ -16,14 +16,4 @@ public class MfView extends BaseMfView {
     public void initViews() {
 
     }
-
-    @Override
-    public void initData() {
-
-    }
-
-    @Override
-    public void updateData() {
-
-    }
 }

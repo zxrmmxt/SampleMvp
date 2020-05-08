@@ -48,8 +48,8 @@ public abstract class BasePageFragment<MvpView extends BaseView> extends CommonF
     private void loadDataLogic() {
         if (mIsFirstLoad) {
             mIsFirstLoad = false;
-            mMvpView.initData();
+            mMvpView.getPresenter().initData();
         }
-        mMvpView.resumeData();
+        mMvpView.getPresenter().resumeData();
     }
 }

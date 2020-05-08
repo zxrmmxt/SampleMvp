@@ -19,14 +19,4 @@ public class MView extends BaseMView {
     public void initViews() {
         mActivity.setTitleText("模板");
     }
-
-    @Override
-    public void initData() {
-
-    }
-
-    @Override
-    public void updateData() {
-
-    }
 }

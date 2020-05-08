@@ -17,9 +17,6 @@ import com.xt.common.R;
 import com.xt.common.topbar.TopBarHolder;
 import com.xt.common.statusbar.ImmersiveStatusBarUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @author xt
  * @date 2017/3/20
@@ -88,7 +85,7 @@ public abstract class BaseActivity<MvpView extends BaseView> extends AppCompatAc
     @Override
     protected void onResume() {
         super.onResume();
-        mMvpView.updateData();
+        mMvpView.resumeData();
     }
 
     @Override

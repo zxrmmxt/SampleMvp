@@ -40,9 +40,9 @@ public abstract class BaseView<MvpPresenter extends BasePresenter> {
     abstract void initData();
 
     /**
-     * 一般是在activity的onResume方法中调用
+     * 一般是在activity或fragment的onResume方法中调用，或者在fragment中onHideChange中调用
      */
-    abstract void updateData();
+    abstract void resumeData();
 
     final void init(BaseActivity activity) {
         mActivity = activity;

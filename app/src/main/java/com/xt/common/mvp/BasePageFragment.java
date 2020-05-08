@@ -50,6 +50,6 @@ public abstract class BasePageFragment<MvpView extends BaseView> extends CommonF
             mIsFirstLoad = false;
             mMvpView.initData();
         }
-        mMvpView.updateData();
+        mMvpView.resumeData();
     }
 }

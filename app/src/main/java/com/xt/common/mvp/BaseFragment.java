@@ -100,6 +100,6 @@ public abstract class BaseFragment<MvpView extends BaseView> extends CommonFragm
      * 每一次显示都调用
      */
     private void updateData() {
-        mMvpView.updateData();
+        mMvpView.resumeData();
     }
 }

@@ -1,9 +1,9 @@
-package com.xt.common.sample.activity;
+package com.xt.sample.activity;
 
 import com.xt.common.R;
 import com.xt.common.mvp.BaseActivity;
-import com.xt.common.sample.mvp.main.base.BaseMainView;
-import com.xt.common.sample.mvp.main.MainView;
+import com.xt.sample.mvp.main.base.BaseMainView;
+import com.xt.sample.mvp.main.MainView;
 
 /**
  * @author xt

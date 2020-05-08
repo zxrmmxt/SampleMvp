@@ -1,12 +1,12 @@
-package com.xt.common.sample.mvp.main;
+package com.xt.sample.mvp.main;
 
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.xt.common.R;
 import com.xt.common.mvp.BaseActivity;
-import com.xt.common.sample.mvp.main.base.BaseMainPresenter;
-import com.xt.common.sample.mvp.main.base.BaseMainView;
+import com.xt.sample.mvp.main.base.BaseMainPresenter;
+import com.xt.sample.mvp.main.base.BaseMainView;
 
 import butterknife.BindView;
 

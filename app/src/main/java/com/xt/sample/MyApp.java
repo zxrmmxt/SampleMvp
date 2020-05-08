@@ -1,4 +1,4 @@
-package com.xt.common.sample;
+package com.xt.sample;
 
 import android.app.Application;
 

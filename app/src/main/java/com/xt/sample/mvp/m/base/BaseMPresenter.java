@@ -7,7 +7,4 @@ import com.xt.common.mvp.BasePresenter;
  * 用于copy到自己项目
  */
 public abstract class BaseMPresenter extends BasePresenter<BaseMView, BaseMModel> {
-    public BaseMPresenter(BaseMView view, BaseMModel model) {
-        super(view, model);
-    }
 }

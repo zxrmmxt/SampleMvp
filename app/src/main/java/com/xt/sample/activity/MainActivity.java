@@ -17,6 +17,6 @@ public class MainActivity extends BaseActivity<BaseMainView> {
 
     @Override
     protected BaseMainView createMvpView() {
-        return new MainView(this);
+        return new MainView();
     }
 }

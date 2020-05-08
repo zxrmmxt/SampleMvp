@@ -9,13 +9,10 @@ import com.xt.sample.mvp.m.base.BaseMView;
  * 用于copy到自己项目
  */
 public class MView extends BaseMView {
-    public MView(BaseActivity activity) {
-        super(activity);
-    }
 
     @Override
     protected BaseMPresenter createPresenter() {
-        return new MPresenter(this);
+        return new MPresenter();
     }
 
     @Override
@@ -25,6 +22,11 @@ public class MView extends BaseMView {
 
     @Override
     public void initData() {
+
+    }
+
+    @Override
+    public void updateData() {
 
     }
 }

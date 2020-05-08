@@ -17,7 +17,6 @@ public class MActivity extends BaseActivity<BaseMView> {
 
     @Override
     protected BaseMView createMvpView() {
-        return new MView(this);
+        return new MView();
     }
-
 }

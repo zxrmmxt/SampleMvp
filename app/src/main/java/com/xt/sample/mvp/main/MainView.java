@@ -17,13 +17,9 @@ public class MainView extends BaseMainView {
     @BindView(R.id.textView)
     TextView mTextView;
 
-    public MainView(BaseActivity activity) {
-        super(activity);
-    }
-
     @Override
     protected BaseMainPresenter createPresenter() {
-        return new MainPresenter(this);
+        return new MainPresenter();
     }
 
     @Override
@@ -34,6 +30,11 @@ public class MainView extends BaseMainView {
     @Override
     public void initData() {
         mPresenter.getData();
+    }
+
+    @Override
+    public void updateData() {
+
     }
 
     @Override

@@ -7,13 +7,9 @@ public abstract class BasePresenter<MvpView extends BaseView, MvpModel extends B
     protected MvpView  mView;
     protected MvpModel mModel;
 
-    public BasePresenter(MvpView view) {
+    void setView(MvpView view) {
         mView = view;
+        mModel = createModel();
     }
-
-    public BasePresenter(MvpView view, MvpModel model) {
-        mView = view;
-        mModel = model;
-    }
-
+    protected abstract MvpModel createModel();
 }

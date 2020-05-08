@@ -34,8 +34,7 @@ public abstract class BaseActivity<MvpView extends BaseView> extends AppCompatAc
     /**
      * 默认的MvpView
      */
-    protected MvpView        mMvpView;
-    protected List<BaseView> mMvpViewList = new ArrayList<>();
+    protected MvpView mMvpView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +83,12 @@ public abstract class BaseActivity<MvpView extends BaseView> extends AppCompatAc
     public void finish() {
         super.finish();
         overridePendingTransition(R.anim.anim_no, R.anim.out_to_right);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mMvpView.updateData();
     }
 
     @Override
@@ -182,11 +187,7 @@ public abstract class BaseActivity<MvpView extends BaseView> extends AppCompatAc
 
     private void initMvpView() {
         mMvpView = createMvpView();
-        if (mMvpView != null) {
-            mMvpView.attachUi(this);
-            mMvpView.initViews();
-            mMvpView.initData();
-        }
+        mMvpView.init(this);
     }
 
     /**

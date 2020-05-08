@@ -3,6 +3,7 @@ package com.xt.sample.mvp.main;
 import android.os.Handler;
 
 import com.blankj.utilcode.util.ToastUtils;
+import com.xt.sample.mvp.main.base.BaseMainModel;
 import com.xt.sample.mvp.main.base.BaseMainPresenter;
 import com.xt.sample.mvp.main.base.BaseMainView;
 
@@ -10,9 +11,6 @@ import com.xt.sample.mvp.main.base.BaseMainView;
  * @author xt on 2020/4/17 12:14
  */
 public class MainPresenter extends BaseMainPresenter {
-    public MainPresenter(BaseMainView view) {
-        super(view, new MainModel());
-    }
 
     @Override
     public void getData() {
@@ -24,5 +22,10 @@ public class MainPresenter extends BaseMainPresenter {
                 mView.updateViewData(data);
             }
         }, 2000);
+    }
+
+    @Override
+    protected BaseMainModel createModel() {
+        return new MainModel();
     }
 }

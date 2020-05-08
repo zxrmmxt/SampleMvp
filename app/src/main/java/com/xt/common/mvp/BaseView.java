@@ -17,8 +17,9 @@ public abstract class BaseView<MvpPresenter extends BasePresenter> {
      */
     protected SoftReference<Object> mUiSoftReference;
 
-    protected BaseActivity mActivity;
-    protected View         mFragmentContentView;
+    protected BaseActivity   mActivity;
+    protected CommonFragment mFragment;
+    protected View           mFragmentContentView;
 
     /**
      * 实例化Presenter的子类对象
@@ -31,40 +32,52 @@ public abstract class BaseView<MvpPresenter extends BasePresenter> {
     /**
      * 初始化控件
      */
-    public abstract void initViews();
+    abstract void initViews();
 
     /**
      * 初始化数据
      */
-    public abstract void initData();
-
-    public BaseView(BaseActivity activity) {
-        ButterKnife.bind(this, activity);
-        mActivity = activity;
-        mPresenter = createPresenter();
-    }
+    abstract void initData();
 
     /**
-     * @param fragmentContentView Fragment的contentView
+     * 一般是在activity的onResume方法中调用
      */
-    public BaseView(View fragmentContentView) {
-        ButterKnife.bind(this, fragmentContentView);
-        mFragmentContentView = fragmentContentView;
+    abstract void updateData();
+
+    final void init(BaseActivity activity) {
+        mActivity = activity;
+        ButterKnife.bind(this, activity);
+        attachUi(this);
+        initViews();
         mPresenter = createPresenter();
+        mPresenter.setView(this);
+
+        initData();
+
     }
 
-    public void attachUi(Object ui) {
+    final void init(CommonFragment fragment, View fragmentContentView) {
+        mFragment = fragment;
+        mFragmentContentView = fragmentContentView;
+        ButterKnife.bind(this, fragmentContentView);
+        attachUi(this);
+        initViews();
+        mPresenter = createPresenter();
+        mPresenter.setView(this);
+    }
+
+    void attachUi(Object ui) {
         mUiSoftReference = new SoftReference<>(ui);
     }
 
-    public void detachUi() {
+    void detachUi() {
         if (mUiSoftReference != null) {
             mUiSoftReference.clear();
         }
         onDetachView();
     }
 
-    public void onDetachView() {
+    protected void onDetachView() {
     }
 
 

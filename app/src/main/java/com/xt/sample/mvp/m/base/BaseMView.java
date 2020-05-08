@@ -8,7 +8,4 @@ import com.xt.common.mvp.BaseView;
  * 用于copy到自己项目
  */
 public abstract class BaseMView extends BaseView<BaseMPresenter> {
-    public BaseMView(BaseActivity activity) {
-        super(activity);
-    }
 }

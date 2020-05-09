@@ -37,7 +37,7 @@ public abstract class BaseView<MvpPresenter extends BasePresenter> {
     final void init(BaseActivity activity) {
         mActivity = activity;
         ButterKnife.bind(this, activity);
-        attachUi(this);
+        attachUi(activity);
         mPresenter = createPresenter();
         mPresenter.setView(this);
         initViews();
@@ -45,10 +45,10 @@ public abstract class BaseView<MvpPresenter extends BasePresenter> {
     }
 
     final void init(CommonFragment fragment, View fragmentContentView) {
+        ButterKnife.bind(this, fragmentContentView);
+        attachUi(fragment);
         mFragment = fragment;
         mFragmentContentView = fragmentContentView;
-        ButterKnife.bind(this, fragmentContentView);
-        attachUi(this);
         mPresenter = createPresenter();
         mPresenter.setView(this);
         initViews();

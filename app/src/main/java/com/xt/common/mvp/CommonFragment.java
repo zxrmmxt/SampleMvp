@@ -14,11 +14,9 @@ public abstract class CommonFragment<MvpView extends BaseView> extends Fragment 
      */
     protected MvpView mMvpView;
 
-    protected void initMvpView() {
+    final void initMvpView() {
         mMvpView = createMvpView();
-        if (mMvpView != null) {
-            mMvpView.init(this, mRootView);
-        }
+        mMvpView.init(this, mRootView);
     }
 
     /**
@@ -32,5 +30,11 @@ public abstract class CommonFragment<MvpView extends BaseView> extends Fragment 
         if ((mMvpView != null)) {
             mMvpView.detachUi();
         }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        destroyView();
     }
 }

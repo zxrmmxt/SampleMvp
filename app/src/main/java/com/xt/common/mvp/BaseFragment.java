@@ -30,6 +30,8 @@ public abstract class BaseFragment<MvpView extends BaseView> extends CommonFragm
             mRootView = inflater.inflate(getLayoutId(), container, false);
             initMvpView();
             mMvpView.getPresenter().initData();
+        }else{
+            mMvpView.attachUi(this);
         }
         return mRootView;
     }
@@ -92,8 +94,6 @@ public abstract class BaseFragment<MvpView extends BaseView> extends CommonFragm
                 }
             }
         }
-
-
     }
 
     /**

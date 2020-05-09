@@ -199,5 +199,4 @@ public abstract class BaseActivity<MvpView extends BaseView> extends AppCompatAc
             mMvpView.detachUi();
         }
     }
-
 }

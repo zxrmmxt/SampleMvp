@@ -22,6 +22,8 @@ public abstract class BasePageFragment<MvpView extends BaseView> extends CommonF
         if (mRootView == null) {
             mRootView = inflater.inflate(getLayoutId(), container, false);
             initMvpView();
+        } else {
+            mMvpView.attachUi(this);
         }
         return mRootView;
     }

@@ -14,4 +14,14 @@ class MPresenter extends BaseMPresenter {
     protected BaseMModel createModel() {
         return new MModel();
     }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void resumeData() {
+
+    }
 }

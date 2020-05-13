@@ -22,6 +22,11 @@ public class MainPresenter extends BaseMainPresenter {
     }
 
     @Override
+    protected void resumeData() {
+
+    }
+
+    @Override
     public void getData() {
         ToastUtils.showShort("加载中...");
         new Handler().postDelayed(new Runnable() {

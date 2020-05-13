@@ -11,4 +11,14 @@ public class MfPresenter extends BaseMfPresenter {
     protected BaseMfModel createModel() {
         return new MfModel();
     }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void resumeData() {
+
+    }
 }

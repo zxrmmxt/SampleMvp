@@ -1,6 +1,5 @@
 package com.xt.common.mvp;
 
-import android.app.Activity;
 import android.view.View;
 
 import java.lang.ref.SoftReference;
@@ -15,7 +14,7 @@ public abstract class BaseView<MvpPresenter extends BasePresenter> {
     /**
      * Activity或Fragment的引用
      */
-    protected SoftReference<Object> mUiSoftReference;
+    protected Object mUi;
 
     protected BaseActivity   mActivity;
     protected CommonFragment mFragment;
@@ -55,13 +54,14 @@ public abstract class BaseView<MvpPresenter extends BasePresenter> {
     }
 
     final void attachUi(Object ui) {
-        mUiSoftReference = new SoftReference<>(ui);
+        mUi = ui;
     }
 
     final void detachUi() {
-        if (mUiSoftReference != null) {
-            mUiSoftReference.clear();
-        }
+        mUi = null;
+        mActivity = null;
+        mFragment = null;
+        mFragmentContentView = null;
         mPresenter.onDetachView();
     }
 
@@ -72,7 +72,7 @@ public abstract class BaseView<MvpPresenter extends BasePresenter> {
      * @return
      */
     public final boolean isUiAttached() {
-        return mUiSoftReference != null && mUiSoftReference.get() != null;
+        return mUi != null;
     }
 
     public final MvpPresenter getPresenter() {

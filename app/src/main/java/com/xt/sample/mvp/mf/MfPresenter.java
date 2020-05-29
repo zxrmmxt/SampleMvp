@@ -13,12 +13,12 @@ public class MfPresenter extends BaseMfPresenter {
     }
 
     @Override
-    protected void initData() {
+    public void initData() {
 
     }
 
     @Override
-    protected void resumeData() {
+    public void resumeData() {
 
     }
 }

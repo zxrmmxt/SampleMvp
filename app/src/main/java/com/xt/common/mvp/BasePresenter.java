@@ -14,9 +14,9 @@ public abstract class BasePresenter<MvpView extends BaseView, MvpModel extends B
 
     protected abstract MvpModel createModel();
 
-    protected abstract void initData();
+    public abstract void initData();
 
-    protected abstract void resumeData();
+    public abstract void resumeData();
 
     public void onDetachView() {
 

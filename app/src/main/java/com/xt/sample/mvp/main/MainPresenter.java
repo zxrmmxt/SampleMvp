@@ -22,7 +22,7 @@ public class MainPresenter extends BaseMainPresenter {
     }
 
     @Override
-    protected void resumeData() {
+    public void resumeData() {
 
     }
 
